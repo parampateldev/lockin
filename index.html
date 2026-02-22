@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lock in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="home">
+    <div class="home__content">
+      <h1 class="home__title">Lock in</h1>
+      <p class="home__tagline">Take a moment. Then focus.</p>
+      <button type="button" class="btn btn--lockin" id="lockinBtn">Lock in</button>
+    </div>
+  </main>
+
+  <div class="meditation" id="meditationScreen" aria-hidden="true">
+    <div class="meditation__bg"></div>
+    <div class="meditation__youtube-wrap" aria-hidden="true">
+      <div id="youtubePlayer"></div>
+    </div>
+    <div class="meditation__circle" id="breathCircle"></div>
+    <p class="meditation__text" id="meditationText">Breathe</p>
+    <p class="meditation__timer" id="meditationTimer"></p>
+  </div>
+
+  <div class="done" id="doneScreen" aria-hidden="true">
+    <div class="done__bg"></div>
+    <p class="done__title">You're locked in.</p>
+    <p class="done__sub">Go do the thing.</p>
+    <button type="button" class="btn btn--continue" id="continueBtn">Continue</button>
+  </div>
+
+  <script src="https://www.youtube.com/iframe_api" async></script>
+  <script src="script.js"></script>
+</body>
+</html>

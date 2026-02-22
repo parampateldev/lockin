@@ -1,0 +1,211 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0f0f12;
+  --bg-soft: #18181c;
+  --surface: #1e1e24;
+  --text: #e8e6e3;
+  --text-muted: #8b8685;
+  --accent: #c9a227;
+  --accent-dim: rgba(201, 162, 39, 0.4);
+  --glow: rgba(201, 162, 39, 0.15);
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Outfit", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ----- Home ----- */
+.home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, var(--glow), transparent 60%),
+    var(--bg);
+}
+
+.home__content {
+  text-align: center;
+  padding: 2rem;
+}
+
+.home__title {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+
+.home__tagline {
+  font-size: 1.125rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin: 0 0 2.5rem;
+}
+
+/* ----- Button ----- */
+.btn {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.btn--lockin {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.btn--lockin:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--accent-dim);
+}
+
+.btn--lockin:active {
+  transform: translateY(0);
+}
+
+.btn--continue {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--text-muted);
+}
+
+.btn--continue:hover {
+  background: var(--bg-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ----- Meditation fullscreen ----- */
+.meditation,
+.done {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.meditation.is-active,
+.done.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.meditation__bg,
+.done__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.meditation__bg {
+  background:
+    radial-gradient(ellipse 100% 80% at 50% 50%, var(--glow), transparent 70%),
+    var(--bg);
+}
+
+.meditation__youtube-wrap {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  pointer-events: none;
+}
+
+.meditation__youtube-wrap iframe {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+
+.done__bg {
+  background: var(--bg);
+}
+
+.meditation__circle {
+  width: min(280px, 70vw);
+  height: min(280px, 70vw);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--accent-dim), transparent 60%);
+  border: 1px solid var(--accent-dim);
+  animation: breathe 8s ease-in-out infinite;
+  margin-bottom: 2rem;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(0.92); opacity: 0.7; }
+  50%       { transform: scale(1);   opacity: 1;   }
+}
+
+.meditation__text {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.meditation__timer {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+  position: relative;
+  z-index: 1;
+}
+
+.done__title {
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.done__sub {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin: 0 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.done .btn {
+  position: relative;
+  z-index: 1;
+}
